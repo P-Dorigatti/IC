@@ -1,0 +1,8 @@
+Grandeza,Tau_Espacial,Blocos_5min_Janela,Leituras_Brutas_9Nos,Eventos_Acima_Tau,Pct_Tempo_Anomalia,Pct_Tempo_Apenas_Mediana,Reducao_Espacial_Pura_Pct
+temperatura (°C),1.0,2303,20727,2303,100.0,0.0,77.78
+temperatura (°C),2.0,2303,20727,2270,98.57,1.43,77.94
+temperatura (°C),3.0,2303,20727,1350,58.62,41.38,82.38
+temperatura (°C),3.5,2303,20727,687,29.83,70.17,85.57
+temperatura (°C),4.0,2303,20727,307,13.33,86.67,87.41
+temperatura (°C),4.5,2303,20727,122,5.3,94.7,88.3
+temperatura (°C),5.0,2303,20727,78,3.39,96.61,88.51

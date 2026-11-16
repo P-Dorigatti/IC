@@ -1,0 +1,41 @@
+Série carregada (Nó 86811 - temperatura):
+ -> Recorte 15 dias (2026-04-01 a 2026-04-16): 4,319 amostras
+ -> Série completa 200 dias: 53,659 amostras
+
+=== REFERÊNCIA ALG 2 NOS 15 DIAS (δ=0.5°C, Thb=60m) ===
+Desempenho Alg 2: Pacotes=827 | TR=80.85% | MAE=0.1676°C | RMSE=0.2231°C | ErroMax=0.499°C
+
+=== MELHOR CONFIGURAÇÃO ENCONTRADA VIA GRID SEARCH PARA ALG 4 (ε=0.5°C, Thb=60m) ===
+Parâmetros Ótimos: alpha=0.4, beta=0.15, deadband=0.005°C/min, damping_phi=0.75
+Desempenho Alg 4 Otimizado: Pacotes=826 | TR=80.88% | MAE=0.1660°C | RMSE=0.2211°C | ErroMax=0.500°C
+
+=== RESULTADOS GLOBAIS NOS 200 DIAS (NÓ 86811 - TEMPERATURA) ===
+                       Algoritmo  Pacotes  TR_pct    MAE   RMSE  ErroMax
+                   Alg 1 (W=15m)    17896   66.65 0.1791 0.2955    3.044
+                   Alg 1 (W=30m)     8954   83.31 0.3072 0.4570    4.844
+                   Alg 1 (W=60m)     4480   91.65 0.4915 0.7031    6.711
+        Alg 2 (δ=0.5°C, Thb=60m)    10335   80.74 0.1687 0.2239    0.499
+Alg 3 (σ=[0.15,0.85], W=[5,60]m)     5384   89.97 0.3948 0.5395    2.479
+Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)    10191   81.01 0.1687 0.2241    0.500
+
+================================================================================================================
+
+Série carregada (Nó 86811 - umidade):
+ -> Recorte 15 dias (2026-04-01 a 2026-04-16): 4,319 amostras
+ -> Série completa 200 dias: 53,644 amostras
+
+=== REFERÊNCIA ALG 2 NOS 15 DIAS (δ=2.0%, Thb=60m) ===
+Desempenho Alg 2: Pacotes=687 | TR=84.09% | MAE=0.6842% | RMSE=0.8926% | ErroMax=2.000%
+
+=== MELHOR CONFIGURAÇÃO ENCONTRADA VIA GRID SEARCH PARA ALG 4 (ε=2.0%, Thb=60m) ===
+Parâmetros Ótimos: alpha=0.6, beta=0.1, deadband=0.03%/min, damping_phi=0.82
+Desempenho Alg 4 Otimizado: Pacotes=669 | TR=84.51% | MAE=0.6582% | RMSE=0.8681% | ErroMax=2.000%
+
+=== RESULTADOS GLOBAIS NOS 200 DIAS (NÓ 86811 - UMIDADE RELATIVA) ===
+                      Algoritmo  Pacotes  TR_pct    MAE   RMSE  ErroMax
+                  Alg 1 (W=15m)    17893   66.64 0.5754 0.9762   13.203
+                  Alg 1 (W=30m)     8953   83.31 1.0311 1.6221   44.645
+                  Alg 1 (W=60m)     4480   91.65 1.6821 2.5044   43.931
+        Alg 2 (δ=2.0%, Thb=60m)     8341   84.45 0.6827 0.8923    2.000
+ Alg 3 (σ=[0.6,3.5], W=[5,60]m)     5065   90.56 1.4158 1.9619    9.753
+Alg 4 (ε=2.0%, Thb=60m, φ=0.82)     8264   84.59 0.6805 0.8901    2.000

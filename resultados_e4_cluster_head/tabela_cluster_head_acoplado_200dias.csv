@@ -1,0 +1,7 @@
+Grandeza,Arquitetura,Amostras_Brutas_9Nos,Pacotes_Enlace_Local_No_CH,TR_Enlace_Local_Pct,Pacotes_LoRaWAN_CH_Gateway,TR_Global_LoRaWAN_Pct,Fator_Compressao_LoRaWAN,MAE_Mediana_Gateway,RMSE_Mediana_Gateway,Pct_Blocos_Com_Outlier
+temperatura (°C),Sem Supressão no Nó-Folha (Bruto 5m -> CH),449681,449681,0.0,10349,97.7,43.5x,0.1687,0.2231,9.61
+temperatura (°C),Nó-Folha com Alg 2 (δ=0.5°C) + CH (τ=4.5°C),449681,92926,79.34,9338,97.92,48.2x,0.2233,0.2852,9.73
+temperatura (°C),Nó-Folha com Alg 4 (ε=0.5°C) + CH (τ=4.5°C),449681,91325,79.69,9190,97.96,48.9x,0.2302,0.2942,9.79
+umidade (%),Sem Supressão no Nó-Folha (Bruto 5m -> CH),449616,449616,0.0,9053,97.99,49.7x,0.6805,0.8901,12.48
+umidade (%),Nó-Folha com Alg 2 (δ=2.0%) + CH (τ=12.0%),449616,77280,82.81,8046,98.21,55.9x,0.9319,1.1731,12.75
+umidade (%),Nó-Folha com Alg 4 (ε=2.0%) + CH (τ=12.0%),449616,75998,83.1,8064,98.21,55.8x,0.9438,1.1879,12.67

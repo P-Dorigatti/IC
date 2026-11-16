@@ -1,0 +1,33 @@
+Coorte,Dispositivo,Sensor,Unidade,Algoritmo,Amostras,Pacotes,TR_pct,MAE,RMSE,ErroMax,P95_Erro
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,Alg 1 (W=15m),22653,7580,66.54,0.1036,0.2722,18.2,0.3958
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,Alg 1 (W=30m),22653,3799,83.23,0.2247,0.466,18.312,0.7833
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,Alg 1 (W=60m),22653,1909,91.57,0.4447,0.8686,18.312,1.5125
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,"Alg 2 (δ=0.5°C, Thb=60m)",22653,3417,84.92,0.1664,0.2211,0.5,0.4417
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,"Alg 3 (σ=[0.15,0.85], W=[5,60]m)",22653,2166,90.44,0.354,0.5176,2.414,1.1571
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,"Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)",22653,3169,86.01,0.1644,0.2179,0.5,0.4374
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,"Alg 2 Alta Precisão (δ=0.2°C, Thb=60m)",22653,6632,70.72,0.0655,0.0919,0.2,0.1857
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,"Alg 4 Alta Precisão (ε=0.2°C, Thb=60m)",22653,6049,73.3,0.0653,0.0905,0.2,0.1829
+Agricola_Solo,86817 (TCC MESSIAS),temperatura_solo,°C,Alg 1 (W=15m),23032,7703,66.56,0.0267,0.0684,2.495,0.089
+Agricola_Solo,86817 (TCC MESSIAS),temperatura_solo,°C,Alg 1 (W=30m),23032,3863,83.23,0.0637,0.1284,2.701,0.208
+Agricola_Solo,86817 (TCC MESSIAS),temperatura_solo,°C,Alg 1 (W=60m),23032,1944,91.56,0.1371,0.254,4.266,0.44
+Agricola_Solo,86817 (TCC MESSIAS),temperatura_solo,°C,"Alg 2 (δ=0.5°C, Thb=60m)",23032,2091,90.92,0.1089,0.1532,0.499,0.338
+Agricola_Solo,86817 (TCC MESSIAS),temperatura_solo,°C,"Alg 3 (σ=[0.15,0.85], W=[5,60]m)",23032,1969,91.45,0.1266,0.2038,1.862,0.419
+Agricola_Solo,86817 (TCC MESSIAS),temperatura_solo,°C,"Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)",23032,2074,91.0,0.1084,0.1526,0.5,0.3366
+Agricola_Solo,86817 (TCC MESSIAS),temperatura_solo,°C,"Alg 2 Alta Precisão (δ=0.2°C, Thb=60m)",23032,2847,87.64,0.0711,0.0924,0.2,0.1803
+Agricola_Solo,86817 (TCC MESSIAS),temperatura_solo,°C,"Alg 4 Alta Precisão (ε=0.2°C, Thb=60m)",23032,2803,87.83,0.0705,0.0918,0.2,0.181
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,Alg 1 (W=15m),22656,7578,66.55,0.4296,1.2645,100.0,1.72
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,Alg 1 (W=30m),22656,3800,83.23,0.8958,2.3594,100.0,3.2062
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,Alg 1 (W=60m),22656,1910,91.57,1.7195,4.2764,100.0,5.79
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,"Alg 2 (δ=2.0%, Thb=60m)",22656,3278,85.53,0.6168,0.8535,2.0,1.7555
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,"Alg 3 (σ=[0.6,3.5], W=[5,60]m)",22656,2185,90.36,1.3004,1.9631,9.42,4.42
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,"Alg 4 (ε=2.0%, Thb=60m, φ=0.82)",22656,3104,86.3,0.5973,0.8327,2.0,1.7372
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,"Alg 2 Alta Precisão (δ=1.0%, Thb=60m)",22656,5647,75.08,0.2921,0.4251,0.999,0.885
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,"Alg 4 Alta Precisão (ε=1.0%, Thb=60m)",22656,5297,76.62,0.2931,0.4236,1.0,0.8816
+Agricola_Solo,86817 (TCC MESSIAS),umidade_solo,%,Alg 1 (W=15m),23058,7712,66.55,0.1272,1.0077,82.596,0.389
+Agricola_Solo,86817 (TCC MESSIAS),umidade_solo,%,Alg 1 (W=30m),23058,3867,83.23,0.204,1.3475,82.596,0.541
+Agricola_Solo,86817 (TCC MESSIAS),umidade_solo,%,Alg 1 (W=60m),23058,1946,91.56,0.3173,1.9071,91.262,0.7961
+Agricola_Solo,86817 (TCC MESSIAS),umidade_solo,%,"Alg 2 (δ=2.0%, Thb=60m)",23058,2022,91.23,0.216,0.3423,1.992,0.726
+Agricola_Solo,86817 (TCC MESSIAS),umidade_solo,%,"Alg 3 (σ=[0.6,3.5], W=[5,60]m)",23058,2003,91.31,0.2427,0.4891,8.068,0.7591
+Agricola_Solo,86817 (TCC MESSIAS),umidade_solo,%,"Alg 4 (ε=2.0%, Thb=60m, φ=0.82)",23058,2030,91.2,0.2207,0.3493,1.989,0.742
+Agricola_Solo,86817 (TCC MESSIAS),umidade_solo,%,"Alg 2 Alta Precisão (δ=1.0%, Thb=60m)",23058,2150,90.68,0.1905,0.2742,0.999,0.609
+Agricola_Solo,86817 (TCC MESSIAS),umidade_solo,%,"Alg 4 Alta Precisão (ε=1.0%, Thb=60m)",23058,2164,90.61,0.1904,0.2741,0.999,0.6076

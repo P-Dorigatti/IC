@@ -1,0 +1,19 @@
+Cenario,Grandeza,Algoritmo,Limiar_Critico,Latencia_Alerta_min,Valor_Extremo_Real,Valor_Extremo_Reconstruido,Erro_Pico_Abs,RMSE_Janela_Evento
+Surto Real Cluster_Server (29/03/2026: +6.0°C em 40m -> 26.36°C),temperatura (°C),Alg 1: Janela Fixa Média (W=30m),>= 23.0°C,40.0,26.356,25.159,1.196,1.4747
+Surto Real Cluster_Server (29/03/2026: +6.0°C em 40m -> 26.36°C),temperatura (°C),Alg 1: Janela Fixa Média (W=60m),>= 23.0°C,40.0,26.356,23.761,2.595,1.8948
+Surto Real Cluster_Server (29/03/2026: +6.0°C em 40m -> 26.36°C),temperatura (°C),"Alg 2: Limiar Híbrido (δ=0.5°C, Thb=60m)",>= 23.0°C,0.0,26.356,26.211,0.145,0.1878
+Surto Real Cluster_Server (29/03/2026: +6.0°C em 40m -> 26.36°C),temperatura (°C),"Alg 3: Janela Adaptativa (σ=[0.15,0.85], W=[5,60]m)",>= 23.0°C,0.0,26.356,26.356,0.0,0.3142
+Surto Real Cluster_Server (29/03/2026: +6.0°C em 40m -> 26.36°C),temperatura (°C),"Alg 4: Predição Dupla EWMA (ε=0.5°C, φ=0.75)",>= 23.0°C,0.0,26.356,26.415,0.059,0.1752
+Pico Extremo Nó 86795 (12/03/2026: 51.20°C + Surto Setembro 25.30°C),temperatura (°C),Alg 1: Janela Fixa Média (W=30m),>= 25.0°C,0.0,51.2,51.2,0.0,0.2847
+Pico Extremo Nó 86795 (12/03/2026: 51.20°C + Surto Setembro 25.30°C),temperatura (°C),"Alg 2: Limiar Híbrido (δ=0.5°C, Thb=60m)",>= 25.0°C,0.0,51.2,51.2,0.0,0.2019
+Pico Extremo Nó 86795 (12/03/2026: 51.20°C + Surto Setembro 25.30°C),temperatura (°C),"Alg 4: Predição Dupla EWMA (ε=0.5°C, φ=0.75)",>= 25.0°C,0.0,51.2,51.2,0.0,0.2041
+Injeção Sintética: Frente Fria / Geada (-6.0°C em 20m - Nó 86811),temperatura (°C),Alg 1: Janela Fixa Média (W=30m),<= 21.7°C,40.0,17.791,18.373,0.582,1.1058
+Injeção Sintética: Frente Fria / Geada (-6.0°C em 20m - Nó 86811),temperatura (°C),Alg 1: Janela Fixa Média (W=60m),<= 21.7°C,40.0,17.791,19.077,1.286,1.9503
+Injeção Sintética: Frente Fria / Geada (-6.0°C em 20m - Nó 86811),temperatura (°C),"Alg 2: Limiar Híbrido (δ=0.5°C, Thb=60m)",<= 21.7°C,0.0,17.791,17.791,0.0,0.2182
+Injeção Sintética: Frente Fria / Geada (-6.0°C em 20m - Nó 86811),temperatura (°C),"Alg 3: Janela Adaptativa (W=[5,60]m)",<= 21.7°C,0.0,17.791,18.046,0.255,0.6134
+Injeção Sintética: Frente Fria / Geada (-6.0°C em 20m - Nó 86811),temperatura (°C),Alg 4: Predição Dupla EWMA (ε=0.5°C),<= 21.7°C,0.0,17.791,17.785,0.006,0.2217
+Injeção Sintética: Chuva / Irrigação (+25.0% em 20m - Nó 86811),umidade (%),Alg 1: Janela Fixa Média (W=30m),>= 86.9%,40.0,100.0,99.792,0.208,4.101
+Injeção Sintética: Chuva / Irrigação (+25.0% em 20m - Nó 86811),umidade (%),Alg 1: Janela Fixa Média (W=60m),>= 86.9%,40.0,100.0,98.794,1.206,7.056
+Injeção Sintética: Chuva / Irrigação (+25.0% em 20m - Nó 86811),umidade (%),"Alg 2: Limiar Híbrido (δ=2.0%, Thb=60m)",>= 86.9%,0.0,100.0,100.0,0.0,0.7913
+Injeção Sintética: Chuva / Irrigação (+25.0% em 20m - Nó 86811),umidade (%),"Alg 3: Janela Adaptativa (W=[5,60]m)",>= 86.9%,0.0,100.0,100.0,0.0,1.828
+Injeção Sintética: Chuva / Irrigação (+25.0% em 20m - Nó 86811),umidade (%),Alg 4: Predição Dupla EWMA (ε=2.0%),>= 86.9%,0.0,100.0,100.0,0.0,0.8063

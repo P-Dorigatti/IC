@@ -1,0 +1,65 @@
+=== TESTANDO LABS 1006 (Amb 1), 1008 (Amb 2) E SENSORES EXTRAS EM 2026 ===
+  [ATIVO 2026] Amb 2 | Dev    12 (TCL 1008                ) | Sensor 11 -> 1688 blocos (2026-03-01 a 2026-10-20) | Média: 5.58
+  [ATIVO 2026] Amb 1 | Dev   887 (1006-TEMPHUM-09         ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev   887 (1006-TEMPHUM-09         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev 86793 (1006-TEMPHUM-08         ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 24.84
+  [ATIVO 2026] Amb 1 | Dev 86793 (1006-TEMPHUM-08         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev   890 (1008-TEMPHUM-05         ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 23.91
+  [ATIVO 2026] Amb 2 | Dev   890 (1008-TEMPHUM-05         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev    15 (Protoboard 1006 com LDR ) | Sensor  1 ->  611 blocos (2026-03-01 a 2026-09-19) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev    15 (Protoboard 1006 com LDR ) | Sensor  2 ->  611 blocos (2026-03-01 a 2026-09-19) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev    15 (Protoboard 1006 com LDR ) | Sensor 10 ->  611 blocos (2026-03-01 a 2026-09-19) | Média: 1405.18
+  [ATIVO 2026] Amb 1 | Dev 86781 (TEMP1                   ) | Sensor  1 ->  537 blocos (2026-03-01 a 2026-04-17) | Média: 25.13
+  [ATIVO 2026] Amb 1 | Dev 86781 (TEMP1                   ) | Sensor  2 ->  537 blocos (2026-03-01 a 2026-04-17) | Média: 52.86
+  [ATIVO 2026] Amb 1 | Dev 86781 (TEMP1                   ) | Sensor 10 ->  537 blocos (2026-03-01 a 2026-04-17) | Média: 1412.52
+  [ATIVO 2026] Amb 2 | Dev 86805 (1008-TEMPHUM-03         ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 24.52
+  [ATIVO 2026] Amb 2 | Dev 86805 (1008-TEMPHUM-03         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev 86806 (1008-TEMPHUM-04         ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 24.16
+  [ATIVO 2026] Amb 2 | Dev 86806 (1008-TEMPHUM-04         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev 86803 (1008-TEMPHUM-02         ) | Sensor  1 -> 1756 blocos (2026-03-01 a 2026-10-28) | Média: 23.37
+  [ATIVO 2026] Amb 2 | Dev 86803 (1008-TEMPHUM-02         ) | Sensor  2 -> 1757 blocos (2026-03-01 a 2026-10-28) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev 86808 (1008-TEMPHUM-08         ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 23.34
+  [ATIVO 2026] Amb 2 | Dev 86808 (1008-TEMPHUM-08         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev 86801 (1008REUNIAO-TEMPHUM-04  ) | Sensor  1 -> 1561 blocos (2026-03-01 a 2026-09-19) | Média: 23.61
+  [ATIVO 2026] Amb 2 | Dev 86801 (1008REUNIAO-TEMPHUM-04  ) | Sensor  2 -> 1561 blocos (2026-03-01 a 2026-09-19) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev 86791 (1006-TEMPHUM-03         ) | Sensor  1 -> 1670 blocos (2026-03-01 a 2026-10-14) | Média: 24.85
+  [ATIVO 2026] Amb 1 | Dev 86791 (1006-TEMPHUM-03         ) | Sensor  2 -> 1670 blocos (2026-03-01 a 2026-10-14) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev  1025 (1008REUNIAO-TEMPHUM-03  ) | Sensor  1 -> 1561 blocos (2026-03-01 a 2026-09-19) | Média: 23.97
+  [ATIVO 2026] Amb 2 | Dev  1025 (1008REUNIAO-TEMPHUM-03  ) | Sensor  2 -> 1561 blocos (2026-03-01 a 2026-09-19) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev    23 (Ar Samsung Direita Vilalba) | Sensor 11 ->  882 blocos (2026-03-01 a 2026-09-19) | Média: 1.38
+  [ATIVO 2026] Amb 1 | Dev 86789 (1006-TEMPHUM-01         ) | Sensor  1 -> 1467 blocos (2026-03-01 a 2026-09-19) | Média: 23.47
+  [ATIVO 2026] Amb 1 | Dev 86789 (1006-TEMPHUM-01         ) | Sensor  2 -> 1467 blocos (2026-03-01 a 2026-09-19) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev    24 (1006-TEMPHUM-05         ) | Sensor  1 ->  358 blocos (2026-03-01 a 2026-03-31) | Média: 25.42
+  [ATIVO 2026] Amb 1 | Dev    24 (1006-TEMPHUM-05         ) | Sensor  2 ->  358 blocos (2026-03-01 a 2026-03-31) | Média: 59.83
+  [ATIVO 2026] Amb 2 | Dev 86804 (1008-TEMPHUM-01         ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 24.04
+  [ATIVO 2026] Amb 2 | Dev 86804 (1008-TEMPHUM-01         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev     2 (Ar Samsung 1006 esquerda) | Sensor 11 ->  862 blocos (2026-03-01 a 2026-09-19) | Média: 1.22
+  [ATIVO 2026] Amb 2 | Dev 86815 (1008-TEMPHUM-07         ) | Sensor  1 -> 1677 blocos (2026-03-01 a 2026-10-20) | Média: 23.19
+  [ATIVO 2026] Amb 2 | Dev 86815 (1008-TEMPHUM-07         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev 86802 (1008REUNIAO-TEMPHUM-05  ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 23.75
+  [ATIVO 2026] Amb 2 | Dev 86802 (1008REUNIAO-TEMPHUM-05  ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev    13 (Ar Daikin 1008          ) | Sensor 11 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 0.16
+  [ATIVO 2026] Amb 1 | Dev     1 (TEMP2                   ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 23.44
+  [ATIVO 2026] Amb 1 | Dev     1 (TEMP2                   ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 55.61
+  [ATIVO 2026] Amb 1 | Dev     1 (TEMP2                   ) | Sensor 10 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 880.95
+  [ATIVO 2026] Amb 1 | Dev 86790 (1006-TEMPHUM-02         ) | Sensor  1 -> 1610 blocos (2026-03-01 a 2026-10-14) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev 86790 (1006-TEMPHUM-02         ) | Sensor  2 -> 1610 blocos (2026-03-01 a 2026-10-14) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev 86807 (1008-TEMPHUM-06         ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev 86807 (1008-TEMPHUM-06         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev    48 (1006-TEMPHUM-07         ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev    48 (1006-TEMPHUM-07         ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev   891 (1006-TEMPHUM-06         ) | Sensor  1 -> 1671 blocos (2026-03-01 a 2026-10-28) | Média: 22.14
+  [ATIVO 2026] Amb 1 | Dev   891 (1006-TEMPHUM-06         ) | Sensor  2 -> 1671 blocos (2026-03-01 a 2026-10-28) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev 86788 (1008REUNIAO-TEMPHUM-06  ) | Sensor  1 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: 23.15
+  [ATIVO 2026] Amb 2 | Dev 86788 (1008REUNIAO-TEMPHUM-06  ) | Sensor  2 -> 1678 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev     4 (Prototipo 1008 com LDR  ) | Sensor  1 -> 1690 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 2 | Dev     4 (Prototipo 1008 com LDR  ) | Sensor  2 -> 1691 blocos (2026-03-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 1 | Dev 86782 (TEMP4                   ) | Sensor  1 -> 1561 blocos (2026-03-01 a 2026-09-19) | Média: 23.82
+  [ATIVO 2026] Amb 1 | Dev 86782 (TEMP4                   ) | Sensor  2 -> 1561 blocos (2026-03-01 a 2026-09-19) | Média: 54.09
+  [ATIVO 2026] Amb 1 | Dev 86782 (TEMP4                   ) | Sensor 10 -> 1561 blocos (2026-03-01 a 2026-09-19) | Média: 1083.53
+  [ATIVO 2026] Amb 4 | Dev 86817 (TCC MESSIAS             ) | Sensor  1 ->  773 blocos (2026-07-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 4 | Dev 86817 (TCC MESSIAS             ) | Sensor  2 ->  773 blocos (2026-07-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 4 | Dev 86817 (TCC MESSIAS             ) | Sensor 13 ->  773 blocos (2026-07-01 a 2026-10-20) | Média: 5.54
+  [ATIVO 2026] Amb 4 | Dev 86817 (TCC MESSIAS             ) | Sensor 14 ->  773 blocos (2026-07-01 a 2026-10-20) | Média: nan
+  [ATIVO 2026] Amb 4 | Dev 86817 (TCC MESSIAS             ) | Sensor 15 ->  774 blocos (2026-07-01 a 2026-10-20) | Média: 0.11
+PS F:\Programação\Python\IC> 

@@ -1,0 +1,85 @@
+Coorte,Dispositivo,Sensor,Unidade,Algoritmo,Amostras,Pacotes,TR_pct,MAE,RMSE,ErroMax,P95_Erro
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),temperatura,°C,Alg 1 (W=15m),53659,17896,66.65,0.1791,0.2955,3.044,0.6555
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),temperatura,°C,Alg 1 (W=30m),53659,8954,83.31,0.3072,0.457,4.844,0.9693
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),temperatura,°C,Alg 1 (W=60m),53659,4480,91.65,0.4915,0.7031,6.711,1.4667
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),temperatura,°C,"Alg 2 (δ=0.5°C, Thb=60m)",53659,10335,80.74,0.1687,0.2239,0.499,0.44
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),temperatura,°C,"Alg 3 (σ=[0.15,0.85], W=[5,60]m)",53659,5384,89.97,0.3948,0.5395,2.479,1.14
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),temperatura,°C,"Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)",53659,10191,81.01,0.1687,0.2241,0.5,0.4433
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),umidade,%,Alg 1 (W=15m),53644,17893,66.64,0.5754,0.9762,13.203,2.0848
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),umidade,%,Alg 1 (W=30m),53644,8953,83.31,1.0311,1.6221,44.645,3.3027
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),umidade,%,Alg 1 (W=60m),53644,4480,91.65,1.6821,2.5044,43.931,5.1479
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),umidade,%,"Alg 2 (δ=2.0%, Thb=60m)",53644,8341,84.45,0.6827,0.8923,2.0,1.7548
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),umidade,%,"Alg 3 (σ=[0.6,3.5], W=[5,60]m)",53644,5065,90.56,1.4158,1.9619,9.753,4.1667
+Externo_Cluster,86811 (1006EXT-TEMPHUM-03),umidade,%,"Alg 4 (ε=2.0%, Thb=60m, φ=0.82)",53644,8264,84.59,0.6805,0.8901,2.0,1.7535
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),temperatura,°C,Alg 1 (W=15m),53655,17893,66.65,0.296,0.6283,8.103,1.3777
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),temperatura,°C,Alg 1 (W=30m),53655,8954,83.31,0.457,0.8128,9.829,1.8019
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),temperatura,°C,Alg 1 (W=60m),53655,4482,91.65,0.6638,1.066,10.78,2.2784
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),temperatura,°C,"Alg 2 (δ=0.5°C, Thb=60m)",53655,15583,70.96,0.15,0.2122,0.499,0.4373
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),temperatura,°C,"Alg 3 (σ=[0.15,0.85], W=[5,60]m)",53655,11661,78.27,0.3639,0.5435,2.667,1.2
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),temperatura,°C,"Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)",53655,15438,71.23,0.149,0.2111,0.5,0.4369
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),umidade,%,Alg 1 (W=15m),53643,17894,66.64,0.8098,1.6312,34.26,3.4127
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),umidade,%,Alg 1 (W=30m),53643,8954,83.31,1.3108,2.2528,54.073,4.7067
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),umidade,%,Alg 1 (W=60m),53643,4481,91.65,1.9847,3.0885,55.882,6.4729
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),umidade,%,"Alg 2 (δ=2.0%, Thb=60m)",53643,12131,77.39,0.6385,0.8688,2.0,1.7508
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),umidade,%,"Alg 3 (σ=[0.6,3.5], W=[5,60]m)",53643,6919,87.1,1.4808,2.1337,10.227,4.6933
+Externo_Cluster,86809 (1006EXT-TEMPHUM-01),umidade,%,"Alg 4 (ε=2.0%, Thb=60m, φ=0.82)",53643,12110,77.42,0.6325,0.8637,2.0,1.7533
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,Alg 1 (W=15m),22653,7580,66.54,0.1036,0.2722,18.2,0.3958
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,Alg 1 (W=30m),22653,3799,83.23,0.2247,0.466,18.312,0.7833
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,Alg 1 (W=60m),22653,1909,91.57,0.4447,0.8686,18.312,1.5125
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,"Alg 2 (δ=0.5°C, Thb=60m)",22653,3417,84.92,0.1664,0.2211,0.5,0.4417
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,"Alg 3 (σ=[0.15,0.85], W=[5,60]m)",22653,2166,90.44,0.354,0.5176,2.414,1.1571
+Agricola_Solo,86817 (TCC MESSIAS),temperatura,°C,"Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)",22653,3169,86.01,0.1644,0.2179,0.5,0.4374
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,Alg 1 (W=15m),22656,7578,66.55,0.4296,1.2645,100.0,1.72
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,Alg 1 (W=30m),22656,3800,83.23,0.8958,2.3594,100.0,3.2062
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,Alg 1 (W=60m),22656,1910,91.57,1.7195,4.2764,100.0,5.79
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,"Alg 2 (δ=2.0%, Thb=60m)",22656,3278,85.53,0.6168,0.8535,2.0,1.7555
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,"Alg 3 (σ=[0.6,3.5], W=[5,60]m)",22656,2185,90.36,1.3004,1.9631,9.42,4.42
+Agricola_Solo,86817 (TCC MESSIAS),umidade,%,"Alg 4 (ε=2.0%, Thb=60m, φ=0.82)",22656,3104,86.3,0.5973,0.8327,2.0,1.7372
+Indoor_Baseline,1 (TEMP2),temperatura,°C,Alg 1 (W=15m),53658,17895,66.65,0.0592,0.1388,2.955,0.3
+Indoor_Baseline,1 (TEMP2),temperatura,°C,Alg 1 (W=30m),53658,8954,83.31,0.0977,0.2079,2.987,0.3923
+Indoor_Baseline,1 (TEMP2),temperatura,°C,Alg 1 (W=60m),53658,4480,91.65,0.1495,0.306,4.588,0.5309
+Indoor_Baseline,1 (TEMP2),temperatura,°C,"Alg 2 (δ=0.5°C, Thb=60m)",53658,5531,89.69,0.1037,0.155,0.499,0.3667
+Indoor_Baseline,1 (TEMP2),temperatura,°C,"Alg 3 (σ=[0.15,0.85], W=[5,60]m)",53658,4751,91.15,0.1355,0.2369,2.595,0.5083
+Indoor_Baseline,1 (TEMP2),temperatura,°C,"Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)",53658,5478,89.79,0.1026,0.1531,0.5,0.3595
+Indoor_Baseline,1 (TEMP2),umidade,%,Alg 1 (W=15m),53665,17896,66.65,0.311,0.6588,13.154,1.3725
+Indoor_Baseline,1 (TEMP2),umidade,%,Alg 1 (W=30m),53665,8954,83.32,0.5422,1.0121,15.48,2.0417
+Indoor_Baseline,1 (TEMP2),umidade,%,Alg 1 (W=60m),53665,4480,91.65,0.8611,1.4781,16.771,3.0051
+Indoor_Baseline,1 (TEMP2),umidade,%,"Alg 2 (δ=2.0%, Thb=60m)",53665,6151,88.54,0.5391,0.7424,1.999,1.6077
+Indoor_Baseline,1 (TEMP2),umidade,%,"Alg 3 (σ=[0.6,3.5], W=[5,60]m)",53665,4773,91.11,0.7953,1.2512,9.22,2.7749
+Indoor_Baseline,1 (TEMP2),umidade,%,"Alg 4 (ε=2.0%, Thb=60m, φ=0.82)",53665,6147,88.55,0.535,0.7397,2.0,1.6083
+Indoor_Baseline,86782 (TEMP4),temperatura,°C,Alg 1 (W=15m),53668,17898,66.65,0.0724,0.1707,4.2,0.3692
+Indoor_Baseline,86782 (TEMP4),temperatura,°C,Alg 1 (W=30m),53668,8955,83.31,0.1164,0.2486,5.606,0.4846
+Indoor_Baseline,86782 (TEMP4),temperatura,°C,Alg 1 (W=60m),53668,4481,91.65,0.1738,0.351,5.471,0.6616
+Indoor_Baseline,86782 (TEMP4),temperatura,°C,"Alg 2 (δ=0.5°C, Thb=60m)",53668,6257,88.34,0.1093,0.1614,0.499,0.3769
+Indoor_Baseline,86782 (TEMP4),temperatura,°C,"Alg 3 (σ=[0.15,0.85], W=[5,60]m)",53668,4902,90.87,0.1531,0.2646,2.538,0.5947
+Indoor_Baseline,86782 (TEMP4),temperatura,°C,"Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)",53668,6242,88.37,0.1077,0.1593,0.5,0.3747
+Indoor_Baseline,86782 (TEMP4),umidade,%,Alg 1 (W=15m),53669,17897,66.65,0.3572,0.753,11.581,1.6191
+Indoor_Baseline,86782 (TEMP4),umidade,%,Alg 1 (W=30m),53669,8954,83.32,0.5993,1.1007,14.416,2.3231
+Indoor_Baseline,86782 (TEMP4),umidade,%,Alg 1 (W=60m),53669,4481,91.65,0.9254,1.5645,15.724,3.2931
+Indoor_Baseline,86782 (TEMP4),umidade,%,"Alg 2 (δ=2.0%, Thb=60m)",53669,6887,87.17,0.5471,0.7536,1.999,1.6263
+Indoor_Baseline,86782 (TEMP4),umidade,%,"Alg 3 (σ=[0.6,3.5], W=[5,60]m)",53669,4817,91.02,0.8546,1.343,10.005,3.0586
+Indoor_Baseline,86782 (TEMP4),umidade,%,"Alg 4 (ε=2.0%, Thb=60m, φ=0.82)",53669,6875,87.19,0.5457,0.7534,2.0,1.6324
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),temperatura,°C,Alg 1 (W=15m),53665,17896,66.65,0.084,0.1518,3.789,0.3417
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),temperatura,°C,Alg 1 (W=30m),53665,8953,83.32,0.1474,0.2396,5.178,0.5192
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),temperatura,°C,Alg 1 (W=60m),53665,4480,91.65,0.1991,0.3039,5.678,0.6212
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),temperatura,°C,"Alg 2 (δ=0.5°C, Thb=60m)",53665,5743,89.3,0.1447,0.1949,0.499,0.4111
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),temperatura,°C,"Alg 3 (σ=[0.15,0.85], W=[5,60]m)",53665,4602,91.42,0.1981,0.2884,1.956,0.625
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),temperatura,°C,"Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)",53665,5774,89.24,0.1438,0.1936,0.5,0.41
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),umidade,%,Alg 1 (W=15m),53652,17896,66.64,0.3933,0.7592,10.135,1.6334
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),umidade,%,Alg 1 (W=30m),53652,8953,83.31,0.6748,1.108,10.135,2.52
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),umidade,%,Alg 1 (W=60m),53652,4480,91.65,0.9151,1.3913,13.061,3.0591
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),umidade,%,"Alg 2 (δ=2.0%, Thb=60m)",53652,6649,87.61,0.5785,0.7829,1.999,1.6516
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),umidade,%,"Alg 3 (σ=[0.6,3.5], W=[5,60]m)",53652,4672,91.29,0.9421,1.4094,8.613,3.1867
+Cluster_Server,86794 (1006CLUSTER-TEMPHUM-01),umidade,%,"Alg 4 (ε=2.0%, Thb=60m, φ=0.82)",53652,6782,87.36,0.5752,0.78,2.0,1.6467
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),temperatura,°C,Alg 1 (W=15m),45738,15270,66.61,0.1112,0.1922,2.3,0.4223
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),temperatura,°C,Alg 1 (W=30m),45738,7651,83.27,0.1747,0.2679,2.3,0.5834
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),temperatura,°C,Alg 1 (W=60m),45738,3841,91.6,0.2263,0.3247,2.261,0.6916
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),temperatura,°C,"Alg 2 (δ=0.5°C, Thb=60m)",45738,5588,87.78,0.1525,0.2019,0.499,0.4143
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),temperatura,°C,"Alg 3 (σ=[0.15,0.85], W=[5,60]m)",45738,3987,91.28,0.2261,0.3262,1.94,0.7092
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),temperatura,°C,"Alg 4 (ε=0.5°C, Thb=60m, φ=0.75)",45738,5672,87.6,0.1541,0.2041,0.5,0.4192
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),umidade,%,Alg 1 (W=15m),45719,15261,66.62,0.7264,1.2908,12.087,2.8734
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),umidade,%,Alg 1 (W=30m),45719,7642,83.28,1.0502,1.637,12.093,3.5533
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),umidade,%,Alg 1 (W=60m),45719,3832,91.62,1.3041,1.9242,15.419,4.0867
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),umidade,%,"Alg 2 (δ=2.0%, Thb=60m)",45719,9109,80.08,0.6268,0.8504,1.999,1.7317
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),umidade,%,"Alg 3 (σ=[0.6,3.5], W=[5,60]m)",45719,4555,90.04,1.268,1.8301,9.687,3.9701
+Cluster_Server,86795 (1006CLUSTER-TEMPHUM-02),umidade,%,"Alg 4 (ε=2.0%, Thb=60m, φ=0.82)",45719,9291,79.68,0.6214,0.8459,2.0,1.7259

@@ -1,0 +1,60 @@
+=== TABELA DE AMBIENTES ===
+ id         name           description
+  1         1006      Laboratorio 1006
+  2         1008      Laboratorio 1008
+  3 Cluster 1006       Cluster da 1006
+  4      Externo      Ambiente externo
+  6 Externo 1006 Parte externa da 1006
+ 10           E1            E1 prédio.
+ 11         Bath   Sensores Inglaterra
+ 12       UFSCAR             Faculdade
+ 13      Unicamp             Faculdade
+ 14      Maquete        Sensor Maquete
+
+=== TABELA DE TIPOS DE SENSORES ===
+ id                name                                        description
+  1         Temperature  Sensor realiza leitura da temperatura do ambiente
+  2            Humidity      Sensor realiza leitura de umidade do ambiente
+ 10          Brightness Sensor realiza leitura da luminosidade do ambiente
+ 11              Energy       Sensor realiza leitura da corrente consumida
+ 12            Presence                Verifica se h[a pessoas no ambiente
+ 13     Umidade de Solo                               Sensor Capacitivo V2
+ 14 Temperatura de Solo                                               Solo
+ 15     Sensor de Fluxo                                    Sensor de fluxo
+
+=== 1. QUANTIDADE DE DISPOSITIVOS POR AMBIENTE ===
+ id_enviroment     env_name            env_desc  total_devices  devices_ativos
+           1.0         1006    Laboratorio 1006             16               0
+           2.0         1008    Laboratorio 1008             17               1
+           3.0 Cluster 1006     Cluster da 1006             11               0
+           4.0      Externo    Ambiente externo             15               1
+          11.0         Bath Sensores Inglaterra              2               0
+          12.0       UFSCAR           Faculdade              1               0
+          13.0      Unicamp           Faculdade              1               0
+          14.0      Maquete      Sensor Maquete              1               0
+
+=== 2. TODOS OS DISPOSITIVOS DOS AMBIENTES EXTERNOS (IDs 4 e 6) ===
+   id               name        description  id_enviroment env_name  available                                                                       sensores_conectados
+  888 1006EXT-TEMPHUM-06         TEMPHUM-06            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+  889 1008EXT-TEMPHUM-02         TEMPHUM-02            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+86812 1006EXT-TEMPHUM-04         TEMPHUM-04            4.0  Externo       True                                                                 1:Temperature, 2:Humidity
+86814 1008EXT-TEMPHUM-01         TEMPHUM-01            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+86784 1008EXT-TEMPHUM-03         TEMPHUM-03            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+86819              Debug         Node debug            4.0  Externo      False                                                                                       NaN
+86810 1006EXT-TEMPHUM-02         TEMPHUM-02            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+86783 1008EXT-TEMPHUM-05         TEMPHUM-05            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+   46 1008EXT-TEMPHUM-06         TEMPHUM-06            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+86811 1006EXT-TEMPHUM-03         TEMPHUM-03            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+  884     Sensor Externo            Externo            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+86785 1008EXT-TEMPHUM-04         TEMPHUM-04            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+86809 1006EXT-TEMPHUM-01 1006EXT-TEMPHUM-01            4.0  Externo      False                                                                 1:Temperature, 2:Humidity
+86817        TCC MESSIAS         TCC Mateus            4.0  Externo      False 1:Temperature, 2:Humidity, 13:Umidade de Solo, 14:Temperatura de Solo, 15:Sensor de Fluxo
+
+=== 3. DISPOSITIVOS COM SENSORES AGRÍCOLAS (Solo IDs 13/14 ou Luminosidade ID 10) EM QUALQUER AMBIENTE ===
+   id                    name                               description  id_enviroment env_name  available                                                                       sensores_conectados
+   15 Protoboard 1006 com LDR                            Protoboard LDR            1.0     1006      False                                                  10:Brightness, 1:Temperature, 2:Humidity
+86781                   TEMP1                                     Temp1            1.0     1006      False                                                  1:Temperature, 2:Humidity, 10:Brightness
+    1                   TEMP2                                     TEMP2            1.0     1006      False                                                  1:Temperature, 10:Brightness, 2:Humidity
+    4  Prototipo 1008 com LDR Prototipo lab 1006 conectado com servidor            2.0     1008      False                                                  1:Temperature, 10:Brightness, 2:Humidity
+86817             TCC MESSIAS                                TCC Mateus            4.0  Externo      False 1:Temperature, 2:Humidity, 13:Umidade de Solo, 14:Temperatura de Solo, 15:Sensor de Fluxo
+
