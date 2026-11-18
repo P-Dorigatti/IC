@@ -122,8 +122,8 @@ def analisar_ar_vs_solo():
     df_ar_solo = pd.DataFrame(rows_ar_solo)
     df_ar_solo.to_csv(OUT_DIR / "tabela_coorte2_ar_vs_solo_86817.csv", index=False)
 
-    # Plot de 7 dias (ex: 01/08/2026 a 08/08/2026) contrastando reconstrução Ar vs Solo (Alg 2 e Alg 4)
-    z_start, z_end = "2026-08-01T00:00:00", "2026-08-08T00:00:00"
+    # Plot de 7 dias (25/06/2026 a 02/07/2026) contrastando reconstrução Ar vs Solo (Alg 2 e Alg 4)
+    z_start, z_end = "2026-06-25T00:00:00", "2026-07-02T00:00:00"
     fig, axes = plt.subplots(2, 2, figsize=(14, 8.5), sharex=True, dpi=150)
 
     paineis = [
@@ -157,8 +157,8 @@ def analisar_ar_vs_solo():
         ax.legend(loc="best", fontsize=8.2, frameon=True)
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%d/%m"))
 
-    axes[1, 0].set_xlabel("Data (01/08/2026 a 08/08/2026)")
-    axes[1, 1].set_xlabel("Data (01/08/2026 a 08/08/2026)")
+    axes[1, 0].set_xlabel("Data (25/06/2026 a 02/07/2026)")
+    axes[1, 1].set_xlabel("Data (25/06/2026 a 02/07/2026)")
     fig.suptitle(
         "Coorte 2 (TCC MESSIAS - Nó 86817): Contraste de Compressão e Reconstrução entre Atmosfera (Ar) e Solo",
         fontsize=12.5,

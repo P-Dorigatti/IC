@@ -3,7 +3,7 @@
 **Pesquisador:** Pedro Dorigatti Aureo Ferreira (Engenharia de Computação — ICMC/USP)  
 **Orientador:** Prof. Dr. Julio Cezar Estrella (LaSDPC — ICMC/USP)  
 **Projeto FAPESP:** *Rede de Sensores Sem Fio na Agricultura de Precisão: Desenvolvimento de Dispositivos IoT para Coleta de Dados em Lavouras Cafeeiras do Brasil*  
-**Status Atual:** **Entregável E4 (Fase 1 e Fase 2 — Algoritmos de Agregação e Supressão Temporal, Fronteira de Pareto, Validação de Reconstrução e Aplicação nos Coortes)** concluído. Etapas em teste/desenvolvimento: *Análise de Latência de Alerta em Anomalias* e *Agregação Espacial via Cluster Head*.
+**Status Atual:** **Entregável E4 100% concluído** (*Algoritmos de Agregação e Supressão Temporal, Fronteira de Pareto, Validação de Reconstrução, Aplicação nos Coortes, Resposta a Anomalias/Latência de Alerta e Simulação de Agregação Espacial via Cluster Head*). Próxima etapa: **Entregável E5 (Bloco B — Extrapolação Analítica LoRaWAN)**.
 
 ---
 
@@ -241,14 +241,100 @@ Ao comparar todos os coortes ([comparacao_multi_coorte_tr_200dias.png](../result
 
 ---
 
-## 6. Etapas em Teste / Próximos Passos do E4 (Anomalias e Cluster Head)
+## 6. Resposta a Anomalias Climáticas e Latência de Alerta ($\Delta t_{\text{alerta}}$)
 
-Para concluir o escopo integral do **Entregável E4** antes da extrapolação analítica de rede LoRaWAN (**Entregável E5 — Bloco B**), duas frentes complementares encontram-se **em fase de testes e validação experimental**:
+Em aplicações agrícolas críticas (como alerta de geada severa em cafezais ou detecção de falha de irrigação/refrigeração), a economia de bateria não pode comprometer a **tempestividade da notificação**. Define-se a **Latência de Alerta ($\Delta t_{\text{alerta}}$)** como o intervalo de tempo decorrido entre o instante exato $t_{\text{real}}$ em que a grandeza física cruza um limiar crítico de emergência ($L_{\text{crit}}$) e o instante $t_{\text{srv}}$ em que o servidor central recebe o primeiro pacote reportando $\hat{y}_t \ge L_{\text{crit}}$ (ou $\le L_{\text{crit}}$):
 
-1. **Avaliação de Resposta a Anomalias e Latência de Alerta ($\Delta t_{\text{alerta}}$) — *(Em Teste)*:**
-   - Investigação do comportamento dinâmico dos algoritmos durante eventos térmicos extremos reais registrados na **Coorte 4 (`Cluster_Server` — Nós `86794` e `86795`)**, tais como o surto de falha de refrigeração em `29/03/2026` ($+6,0^\circ\text{C}$ em $40\text{ min}$) e o pico anômalo do nó `86795`, bem como testes com injeção controlada de eventos climáticos sintéticos agrícolas (queda abrupta de geada de $-6^\circ\text{C}$ em $20\text{ min}$ e salto de umidade por chuva/irrigação) no script preliminar [anomalias_alertas.py](../E4/anomalias_alertas.py).
-   - O objetivo desta bateria de testes é quantificar formalmente o atraso de notificação ($\Delta t_{\text{alerta}}$) e o amortecimento do erro de pico da janela fixa (Algoritmo 1) frente à pronta resposta dos algoritmos orientados a eventos (Algoritmos 2 e 4).
+$$
+\Delta t_{\text{alerta}} = t_{\text{srv}} - t_{\text{real}}
+$$
 
-2. **Simulação de Agregação Espacial via *Cluster Head* (Coorte 1 `Externo_Cluster`) — *(Em Teste)*:**
-   - Utilização da matriz sincronizada dos 9 nós externos ([koala_cluster_externo_wide_5min.csv](../dataset_koala_e2/koala_cluster_externo_wide_5min.csv)) como um "talhão virtual de café" no script de bancada [cluster_head_espacial.py](../E4/cluster_head_espacial.py).
-   - Estão sendo ajustados e testados: (i) a calibração do limiar de discrepância espacial ($\tau_{\text{espacial}}$) frente à heterogeneidade microclimática basal entre os sensores ($3^\circ\text{C}\text{–}4^\circ\text{C}$) e ao pico localizado de $7^\circ\text{C}$ em `13/04/2026`; (ii) o acoplamento em cascata (supressão temporal nos nós-folha via Alg 2/Alg 4 combinada à compressão espacial pela mediana $M_t$ no *Cluster Head*); e (iii) a reconfiguração automática do grupo após a falha permanente (*Node Death*) do nó `86812` em `15/05/2026`.
+O script [anomalias_alertas.py](../E4/anomalias_alertas.py) avaliou três cenários complementares (um evento real extremo do banco de dados e duas injeções sintéticas em direções opostas e em fases temporais distintas):
+1. **Cenário Real (`Coorte 4: Cluster_Server` — Nó `86794` em `29/03/2026` e Nó `86795`):**
+   - No dia `29/03/2026`, uma falha no sistema de climatização da sala de servidores fez a temperatura do nó `86794` saltar **$+6,0^\circ\text{C}$ em 40 minutos** (de $20,3^\circ\text{C}$ às `17:15` para um pico de **$26,36^\circ\text{C}$** às `17:55`, cruzando o limiar crítico de $23,0^\circ\text{C}$ às `17:25`). Adicionalmente, avaliou-se o nó `86795` tanto no pico extremo registrado no banco ($51,20^\circ\text{C}$ em `12/03/2026`) quanto no evento de sobreaquecimento prolongado de `03–04/09/2026` ($25,30^\circ\text{C}$).
+2. **Injeção Sintética de Descida — Frente Fria / Geada (Nó `86811`, Temperatura em `05/04/2026` às `06:05`):**
+   - Rampa abrupta de **$-6,0^\circ\text{C}$ em 20 minutos** ($4$ passos de $5\text{ min}$), mantendo o patamar frio por $2\text{ horas}$, com limiar crítico de alerta $3,0^\circ\text{C}$ abaixo da temperatura pré-evento ($L_{\text{crit}} \le 21,6^\circ\text{C}$).
+3. **Injeção Sintética de Subida — Chuva / Irrigação Súbita (Nó `86811`, Umidade Relativa em `05/04/2026` às `06:50`):**
+   - Rampa abrupta de **$+25,0\%$ em 20 minutos** (respeitando a saturação física em $100\%$), iniciada propositalmente em uma fase horária distinta (`06:50`), com limiar crítico $12,0\%$ acima do nível pré-evento ($L_{\text{crit}} \ge 90,2\%$).
+
+### 6.1. Resultados Consolidados de Latência de Alerta e Erro de Pico
+Os resultados quantitativos ([tabela_anomalias_latencia_alerta.csv](../resultados_e4_anomalias/tabela_anomalias_latencia_alerta.csv)) e visuais ([anomalia_real_cluster_server_86794_86795.png](../resultados_e4_anomalias/anomalia_real_cluster_server_86794_86795.png) e [eventos_sinteticos_geada_chuva_86811.png](../resultados_e4_anomalias/eventos_sinteticos_geada_chuva_86811.png)) são apresentados na tabela a seguir:
+
+| Cenário de Emergência | Algoritmo | Limiar Crítico | Latência ($\Delta t_{\text{alerta}}$) | Extremo Real | Extremo Reconstruído | Erro de Pico | $\text{RMSE}$ na Janela |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **1. Surto Real `Cluster_Server` (`29/03`)** | Alg 1 ($W=30\text{m}$ Média) | $\ge 23,0^\circ\text{C}$ | **40,0 min** | 26,356 °C | 25,159 °C | 1,196 °C | 1,4747 °C |
+| **1. Surto Real `Cluster_Server` (`29/03`)** | Alg 1 ($W=60\text{m}$ Média) | $\ge 23,0^\circ\text{C}$ | **40,0 min** | 26,356 °C | 23,761 °C | 2,595 °C | 1,8948 °C |
+| **1. Surto Real `Cluster_Server` (`29/03`)** | **Alg 2 ($\delta=0,5^\circ\text{C}$)** | $\ge 23,0^\circ\text{C}$ | **0,0 min** | 26,356 °C | 26,211 °C | **0,145 °C** | 0,1878 °C |
+| **1. Surto Real `Cluster_Server` (`29/03`)** | **Alg 4 ($\epsilon=0,5^\circ\text{C}$)** | $\ge 23,0^\circ\text{C}$ | **0,0 min** | 26,356 °C | 26,415 °C | **0,059 °C** | **0,1752 °C** |
+| **2. Geada Sintética (`06:05` — Descida)** | Alg 1 ($W=30\text{m}$ Média) | $\le 21,6^\circ\text{C}$ | **15,0 min** | 17,791 °C | 18,373 °C | 0,582 °C | 1,1103 °C |
+| **2. Geada Sintética (`06:05` — Descida)** | Alg 1 ($W=60\text{m}$ Média) | $\le 21,6^\circ\text{C}$ | **45,0 min** | 17,791 °C | 19,077 °C | 1,286 °C | 1,9645 °C |
+| **2. Geada Sintética (`06:05` — Descida)** | **Alg 2 ($\delta=0,5^\circ\text{C}$)** | $\le 21,6^\circ\text{C}$ | **0,0 min** | 17,791 °C | 18,010 °C | **0,219 °C** | **0,2189 °C** |
+| **2. Geada Sintética (`06:05` — Descida)** | **Alg 4 ($\epsilon=0,5^\circ\text{C}$)** | $\le 21,6^\circ\text{C}$ | **0,0 min** | 17,791 °C | 17,791 °C | **0,000 °C** | 0,2240 °C |
+| **3. Chuva Sintética (`06:50` — Subida)** | Alg 1 ($W=30\text{m}$ Média) | $\ge 90,2\%$ | **25,0 min** | 100,00 % | 98,865 % | 1,135 % | 4,4168 % |
+| **3. Chuva Sintética (`06:50` — Subida)** | Alg 1 ($W=60\text{m}$ Média) | $\ge 90,2\%$ | **55,0 min** | 100,00 % | 98,345 % | 1,655 % | 7,1668 % |
+| **3. Chuva Sintética (`06:50` — Subida)** | **Alg 2 ($\delta=2,0\%$)** | $\ge 90,2\%$ | **0,0 min** | 100,00 % | 100,00 % | **0,000 %** | **0,8182 %** |
+| **3. Chuva Sintética (`06:50` — Subida)** | **Alg 4 ($\epsilon=2,0\%$)** | $\ge 90,2\%$ | **0,0 min** | 100,00 % | 100,00 % | **0,000 %** | 0,8264 % |
+
+### 6.2. Discussão Teórica: Dependência de Fase na Janela Fixa vs. Pronta Resposta Orientada a Eventos
+Como demonstrado pelas duas injeções sintéticas em instantes distintos (`06:05` vs. `06:50`), o atraso de notificação do **Algoritmo 1 (Janela Fixa de período $W$)** não é constante, mas sim uma **variável dependente da fase de chegada da anomalia** em relação ao relógio interno de fechamento da janela:
+- **Limites analíticos do Algoritmo 1:** Caso o limiar crítico seja rompido no exato instante de fechamento da janela e a média acumulada já tenha superado $L_{\text{crit}}$, o atraso mínimo teórico é $\Delta t_{\min} = 0\text{ min}$. Contudo, se o cruzamento ocorrer logo no primeiro passo após o início de um novo ciclo ($5\text{ min}$ após o envio anterior), o nó permanecerá em silêncio por pelo menos $\Delta t = W - \Delta t_{\text{nominal}}$ (ex.: $25\text{ min}$ para $W=30\text{m}$ e $55\text{ min}$ para $W=60\text{m}$, exatamente como observado no cenário das `06:50`). Mais grave ainda: quando o pacote transmite a **média da janela**, as leituras normais anteriores ao evento diluem o valor médio, podendo impedir que a média cruze $L_{\text{crit}}$ no primeiro fechamento e empurrando o alerta para a janela seguinte (como ocorreu no surto real de `29/03`, onde $W=30\text{m}$ demorou $40\text{ min}$ para alertar e achatou o pico real de $26,36^\circ\text{C}$ em até $2,60^\circ\text{C}$).
+- **Invariância de Fase e Latência Zero dos Algoritmos 2 e 4:** Por testarem a condição de disparo $|y_t - \hat{y}_t| \ge \delta, \epsilon$ a cada passo discreto de amostragem ($\Delta t = 5\text{ min}$), os Algoritmos 2 e 4 são **completamente invariantes à fase do evento**: qualquer rampa abrupta que rompa o limiar crítico força o envio imediato do pacote naquele exato ciclo de leitura, garantindo deterministicamente **$\Delta t_{\text{alerta}} = 0,0\text{ min}$** (em relação à resolução do rastro) e preservando o valor extremo de pico/vale.
+
+---
+
+## 7. Fase 3: Agregação Espacial via *Cluster Head* e Acoplamento Temporal + Espacial (`Coorte 1: Externo_Cluster`)
+
+Para avaliar a redução de tráfego em topologia hierárquica (nós-folha transmitindo em enlace local curto para um *Cluster Head*, que agrega espacialmente o talhão e transmite em enlace longo LoRaWAN para o Gateway), o script [cluster_head_espacial.py](../E4/cluster_head_espacial.py) utilizou a matriz sincronizada dos 9 nós externos da **Coorte 1 (`Externo_Cluster`)** ([koala_cluster_externo_wide_5min.csv](../dataset_koala_e2/koala_cluster_externo_wide_5min.csv)).
+
+A cada passo $t$, o *Cluster Head* coleta as estimativas ativas $\{v_{1,t}, \dots, v_{N,t}\}$ do grupo, calcula a **mediana espacial** $M_t = \text{mediana}(v_{i,t})$ e o **desvio espacial máximo instantâneo**:
+
+$$
+\Delta_{\max}(t) = \max_{i \in \{1,\dots,N\}} |v_{i,t} - M_t|
+$$
+
+- Se $\Delta_{\max}(t) \le \tau_{\text{espacial}}$: o talhão é considerado espacialmente coeso e o *Cluster Head* representa todo o grupo apenas pela mediana $M_t$;
+- Se $\Delta_{\max}(t) > \tau_{\text{espacial}}$: o *Cluster Head* sinaliza uma **discrepância espacial localizada**, reportando a mediana $M_t$ acompanhada da identificação e leitura do nó discrepante.
+
+### 7.1. Fundamentação Estatística da Escolha de $\tau_{\text{espacial}}$: Heterogeneidade Estática vs. Anomalia Dinâmica
+Uma questão metodológica fundamental na parametrização do *Cluster Head* é: **de onde provém o valor numérico do limiar $\tau_{\text{espacial}}$?**
+
+Em condições ideais de bancada (todos os sensores co-localizados no mesmo ponto físico), $\tau_{\text{espacial}}$ seria determinado puramente pela soma das incertezas de hardware ($\sim 1,0^\circ\text{C}$). Contudo, em uma lavoura real — e na área externa do testbed Koala — os sensores ocupam posições geográficas distintas sujeitas a **heterogeneidade microclimática estática** (diferenças permanentes de insolação, sombreamento de parede/copa, ventilação ou *offset* crônico de calibração, como o do nó `86812` antes de sua falha em maio).
+
+No rastro real dos 9 nós externos entre `10/04/2026` e `17/04/2026` ([tabela_calibracao_tau_espacial_10a17abril.csv](../resultados_e4_cluster_head/tabela_calibracao_tau_espacial_10a17abril.csv)), o desvio máximo entre os 9 sensores permanece basalmente em torno de **$\overline{\Delta_{\max}} = 3,27^\circ\text{C}$** todos os dias, atingindo um surto extremo de **$7,90^\circ\text{C}$** no dia `13/04` às `14:40` (quando a descarga de ar quente da condensadora atingiu diretamente o nó `1006EXT-TEMPHUM-01`).
+- Caso se adotasse um limiar arbitrário baixo ($\tau_{\text{espacial}} = 1,0^\circ\text{C}$ ou $2,0^\circ\text{C}$), o *Cluster Head* classificaria a diferença geográfica estática entre sol e sombra como "anomalia" em **$98,6\%$ a $100\%$ do tempo**, enviando pacotes extras continuamente e anulando o ganho da agregação espacial.
+- Na ausência de rótulos externos supervisionados de falha, a calibração científica não-supervisionada define $\tau_{\text{espacial}}$ a partir do **Percentil Empírico $P_{90}\text{–}P_{95}$ da distribuição histórica de $\Delta_{\max}$ do próprio talhão**:
+
+$$
+\tau_{\text{espacial}} \approx P_{90}(\Delta_{\max}) \text{ a } P_{95}(\Delta_{\max})
+$$
+
+Desse modo, o *Cluster Head* absorve os $90\%\text{–}95\%$ de variação microclimática rotineira do talhão apenas com a mediana $M_t$, reservando o disparo de alerta espacial exclusivamente para a cauda estatística extrema ($5\%\text{–}10\%$ dos eventos onde um nó descola abruptamente do comportamento coletivo, como no pico de $7,90^\circ\text{C}$ em `13/04`, ilustrado em [calibracao_tau_espacial_abril_cluster_head.png](../resultados_e4_cluster_head/calibracao_tau_espacial_abril_cluster_head.png)).
+
+### 7.2. Efeito da Subdivisão do Talhão em Sub-Clusters Homogêneos (`1006EXT` vs. `1008EXT`)
+Para comprovar que o valor elevado de $\tau_{\text{espacial}} = 4,5^\circ\text{C}$ no grupo de 9 nós decorre do gradiente térmico entre as duas fachadas externas (`1006EXT`, mais quente com média de $\sim 26,5^\circ\text{C}$, vs. `1008EXT`, mais sombreada com média de $\sim 24,3^\circ\text{C}$), avaliamos a divisão da Coorte 1 em **2 Sub-Clusters fisicamente contíguos** ([tabela_comparacao_1cluster_vs_2subclusters_abril.csv](../resultados_e4_cluster_head/tabela_comparacao_1cluster_vs_2subclusters_abril.csv) e [comparacao_1cluster_vs_2subclusters_tau.png](../resultados_e4_cluster_head/comparacao_1cluster_vs_2subclusters_tau.png)):
+- **Sub-Cluster A (`1006EXT` — 4 nós):** `86809`, `86811`, `86812`, `86813`;
+- **Sub-Cluster B (`1008EXT` — 5 nós):** `86814`, `86784`, `86785`, `86783`, `46`.
+
+| Agrupamento Espacial (`10/04` a `17/04/2026`) | $\overline{\Delta_{\max}}$ Médio | Percentil $P_{90}(\Delta_{\max})$ | Tempo Apenas Mediana ($\tau = 3,0^\circ\text{C}$) | Tempo Apenas Mediana ($\tau = 3,5^\circ\text{C}$) | Tempo Apenas Mediana ($\tau = 4,5^\circ\text{C}$) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Cluster Único (9 nós: `1006EXT + 1008EXT`)** | 3,27 °C | 4,15 °C | 41,38% | 70,17% | **94,70%** |
+| **Sub-Cluster A: `1006EXT` (4 nós)** | **2,56 °C** | **3,67 °C** | 74,55% | **87,41%** | 96,79% |
+| **Sub-Cluster B: `1008EXT` (5 nós)** | **2,49 °C** | **3,41 °C** | 79,68% | **91,71%** | 98,39% |
+
+**Conclusão Arquitetural para Lavouras de Café:** Ao particionar um talhão heterogêneo em sub-clusters menores e microclimaticamente homogêneos ($4$ a $5$ sensores por zona de insolação/altitude), o desvio basal médio cai em **$\sim 0,75^\circ\text{C}$** (e nos 200 dias completos do `1006EXT` cai para **$1,71^\circ\text{C}$**), permitindo **reduzir o limiar $\tau_{\text{espacial}}$ de $4,5^\circ\text{C}$ para $3,5^\circ\text{C}$** enquanto se mantém $\sim 90\%$ do tempo de operação apenas com o envio enxuto da mediana.
+
+### 7.3. Simulação Conjunta Acoplada nos 200 Dias Completos e Tolerância a *Node Death*
+Por fim, simulamos os **200 dias completos** acoplando a supressão temporal nos 9 nós-folha (Algoritmo 2 ou Algoritmo 4 no enlace local Nó $\to$ CH) com a agregação espacial pela mediana e supressão temporal no *Cluster Head* (enlace longo LoRaWAN CH $\to$ Gateway, com $\tau_{\text{espacial}} = 4,5^\circ\text{C}$ para Temperatura e $\tau_{\text{espacial}} = 12,0\%$ para Umidade Relativa). Os resultados estão consolidados em [tabela_cluster_head_acoplado_200dias.csv](../resultados_e4_cluster_head/tabela_cluster_head_acoplado_200dias.csv):
+
+| Grandeza (9 Nós Externos — 200 Dias) | Arquitetura Acoplada (Nó-Folha + CH) | Amostras Brutas (9 Nós) | Pacotes Enlace Local (Nó $\to$ CH) | $TR_{\text{local}}$ (%) | Pacotes LoRaWAN (CH $\to$ Gateway) | $TR_{\text{global}}$ LoRaWAN (%) | Fator de Compressão | $\text{RMSE}$ da Mediana |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Temperatura (°C)** | Sem Supressão no Nó-Folha (Bruto 5m $\to$ CH) | 449.681 | 449.681 | 0,00% | 10.349 | 97,70% | $43,5\times$ | 0,2231 °C |
+| **Temperatura (°C)** | **Nó-Folha Alg 2 ($\delta=0,5^\circ\text{C}$) + CH ($\tau=4,5^\circ\text{C}$)** | 449.681 | **92.926** | **79,34%** | **9.338** | **97,92%** | **$48,2\times$** | **0,2852 °C** |
+| **Temperatura (°C)** | **Nó-Folha Alg 4 ($\epsilon=0,5^\circ\text{C}$) + CH ($\tau=4,5^\circ\text{C}$)** | 449.681 | **91.325** | **79,69%** | **9.190** | **97,96%** | **$48,9\times$** | **0,2942 °C** |
+| **Umidade (%)** | Sem Supressão no Nó-Folha (Bruto 5m $\to$ CH) | 449.616 | 449.616 | 0,00% | 9.053 | 97,99% | $49,7\times$ | 0,8901 % |
+| **Umidade (%)** | **Nó-Folha Alg 2 ($\delta=2,0\%$) + CH ($\tau=12,0\%$)** | 449.616 | **77.280** | **82,81%** | **8.046** | **98,21%** | **$55,9\times$** | **1,1731 %** |
+| **Umidade (%)** | **Nó-Folha Alg 4 ($\epsilon=2,0\%$) + CH ($\tau=12,0\%$)** | 449.616 | **75.998** | **83,10%** | **8.064** | **98,21%** | **$55,8\times$** | **1,1879 %** |
+
+#### Destaques da Arquitetura Acoplada:
+1. **Compressão Multiplicativa em Dois Níveis ($48\times$ a $56\times$ menos pacotes LoRaWAN):** A aplicação do Algoritmo 2 ou 4 nos nós-folha elimina **$\sim 80\%$ a $83\%$ das transmissões locais** (poupando a bateria dos sensores de campo), enquanto a agregação pela mediana no *Cluster Head* comprime as $449.681$ leituras brutas do grupo em apenas **$9.190\text{ a }9.338$ pacotes LoRaWAN** em temperatura (**$TR_{\text{global}} = 97,96\%$**) e **$8.046$ pacotes** em umidade (**$TR_{\text{global}} = 98,21\%$**), mantendo a fidelidade de reconstrução da mediana do talhão em $\text{RMSE} = 0,285^\circ\text{C}$ e $1,17\%$.
+2. **Tolerância Automática à Falha Permanente (*Node Death* do Nó `86812` em `15/05/2026`):** Conforme demonstrado em [cluster_head_node_death_86812.png](../resultados_e4_cluster_head/cluster_head_node_death_86812.png), quando o nó `86812` (`1006EXT-TEMPHUM-04`) sofre morte súbita de hardware em `15/05/2026` às `11:30`, o *Cluster Head* detecta o *timeout* de *heartbeat* e reconfigura automaticamente o cálculo da mediana espacial de $9$ para $8$ nós ativos, garantindo continuidade ininterrupta ao monitoramento do talhão sem contaminar a série histórica.

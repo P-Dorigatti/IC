@@ -210,23 +210,25 @@ def analisar_eventos_sinteticos_86811():
     cenarios = [
         (
             "temperatura",
-            "Injeção Sintética: Frente Fria / Geada (-6.0°C em 20m - Nó 86811)",
+            "Injeção Sintética: Frente Fria / Geada (-6.0°C em 20m às 06:05 - Nó 86811)",
             -6.0,
             -3.0,
             "queda",
+            73,  # Início às 06:05 (gera Δt = 15m p/ W=30m e Δt = 45m p/ W=60m)
             axes[0],
         ),
         (
             "umidade",
-            "Injeção Sintética: Chuva / Irrigação (+25.0% em 20m - Nó 86811)",
+            "Injeção Sintética: Chuva / Irrigação (+25.0% em 20m às 06:50 - Nó 86811)",
             +25.0,
             +12.0,
             "subida",
+            82,  # Início às 06:50 (gera Δt = 25m p/ W=30m e Δt = 55m p/ W=60m)
             axes[1],
         ),
     ]
 
-    for sensor, nome_cenario, delta_inj, delta_crit, tipo, ax in cenarios:
+    for sensor, nome_cenario, delta_inj, delta_crit, tipo, idx_ini, ax in cenarios:
         cfg = PARAMS_OTIMOS[sensor]
         unid = cfg["unidade"]
         eps = cfg["eps"]
@@ -240,7 +242,6 @@ def analisar_eventos_sinteticos_86811():
         sub["is_gap_reset"] = sub["dt_min"].isna() | (sub["dt_min"] > 15.0)
 
         y_orig = sub["valor"].values.copy()
-        idx_ini = 74  # 06:10 da manhã (fora do múltiplo exato de 30m/60m para medir latência de fase)
         perfil = np.zeros_like(y_orig)
         perfil[idx_ini : idx_ini + 5] = np.linspace(0.0, delta_inj, 5)
         perfil[idx_ini + 5 : idx_ini + 29] = delta_inj

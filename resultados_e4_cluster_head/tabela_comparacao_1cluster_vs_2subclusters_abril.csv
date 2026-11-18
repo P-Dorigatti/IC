@@ -1,0 +1,19 @@
+Agrupamento,Tau_Espacial_C,DeltaMax_Medio_C,DeltaMax_P90_C,DeltaMax_Pico_C,Pct_Tempo_Apenas_Mediana,Pct_Tempo_Anomalia
+Cluster Único (9 nós: 1006EXT + 1008EXT),2.0,3.27,4.15,7.9,1.43,98.57
+Cluster Único (9 nós: 1006EXT + 1008EXT),2.5,3.27,4.15,7.9,12.77,87.23
+Cluster Único (9 nós: 1006EXT + 1008EXT),3.0,3.27,4.15,7.9,41.38,58.62
+Cluster Único (9 nós: 1006EXT + 1008EXT),3.5,3.27,4.15,7.9,70.17,29.83
+Cluster Único (9 nós: 1006EXT + 1008EXT),4.0,3.27,4.15,7.9,86.67,13.33
+Cluster Único (9 nós: 1006EXT + 1008EXT),4.5,3.27,4.15,7.9,94.7,5.3
+Sub-Cluster A: 1006EXT (4 nós),2.0,2.56,3.67,7.72,27.96,72.04
+Sub-Cluster A: 1006EXT (4 nós),2.5,2.56,3.67,7.72,54.58,45.42
+Sub-Cluster A: 1006EXT (4 nós),3.0,2.56,3.67,7.72,74.55,25.45
+Sub-Cluster A: 1006EXT (4 nós),3.5,2.56,3.67,7.72,87.41,12.59
+Sub-Cluster A: 1006EXT (4 nós),4.0,2.56,3.67,7.72,94.36,5.64
+Sub-Cluster A: 1006EXT (4 nós),4.5,2.56,3.67,7.72,96.79,3.21
+Sub-Cluster B: 1008EXT (5 nós),2.0,2.49,3.41,6.14,24.06,75.94
+Sub-Cluster B: 1008EXT (5 nós),2.5,2.49,3.41,6.14,50.89,49.11
+Sub-Cluster B: 1008EXT (5 nós),3.0,2.49,3.41,6.14,79.68,20.32
+Sub-Cluster B: 1008EXT (5 nós),3.5,2.49,3.41,6.14,91.71,8.29
+Sub-Cluster B: 1008EXT (5 nós),4.0,2.49,3.41,6.14,97.18,2.82
+Sub-Cluster B: 1008EXT (5 nós),4.5,2.49,3.41,6.14,98.39,1.61

@@ -141,8 +141,9 @@ def calibrar_tau_espacial_abril():
     ax1.plot(ts, sub_temp[no_pico], color="#d62728", linewidth=1.6, linestyle="--", label=f"Nó Discrepante no Pico ({no_pico})")
     ax1.set_title("Coorte 1 (Externo_Cluster - 9 Nós): Leituras Individuais vs. Mediana Espacial M_t (10/04 a 17/04/2026)", fontweight="bold")
     ax1.set_ylabel("Temperatura (°C)")
+    ax1.set_ylim(17.0, 41.5)
     ax1.grid(True, linestyle="--", alpha=0.35)
-    ax1.legend(loc="upper right", ncol=3, fontsize=8.5, frameon=True)
+    ax1.legend(loc="upper right", ncol=3, fontsize=8.0, frameon=True)
 
     ax2.plot(ts, delta_max_t, color="#1f77b4", linewidth=1.5, label="Desvio Espacial Máximo Instantâneo (Δ_max = max |v_i - M_t|)")
     ax2.axhline(1.0, color="#7f7f7f", linestyle=":", linewidth=1.2, label="Limiar Ingênuo (τ = 1.0°C -> Falso Alarme Constante)")
@@ -150,20 +151,12 @@ def calibrar_tau_espacial_abril():
     mask_alerta = delta_max_t > tau_escolhido
     ax2.scatter(ts[mask_alerta], delta_max_t[mask_alerta], color="#d62728", s=22, zorder=5,
                 label=f"Anomalia Local Detectada (Δ_max > {tau_escolhido}°C: {np.mean(mask_alerta)*100:.1f}% do tempo)")
-    ax2.annotate(
-        f"Pico de Divergência: {delta_max_t[idx_pico]:.2f}°C\n({ts.iloc[idx_pico].strftime('%d/%m %H:%M')} - {no_pico})",
-        xy=(ts.iloc[idx_pico], delta_max_t[idx_pico]),
-        xytext=(ts.iloc[idx_pico] - pd.Timedelta(days=2.2), delta_max_t[idx_pico] - 0.6),
-        arrowprops=dict(arrowstyle="->", color="#d62728", lw=1.4),
-        fontsize=9,
-        fontweight="bold",
-        color="#d62728",
-    )
     ax2.set_title(f"Calibração de τ_espacial = {tau_escolhido}°C: Absorção do Microclima Basal (3–4°C) e Detecção do Evento de 13/04", fontweight="bold")
     ax2.set_ylabel("Δ_max Espacial (°C)")
     ax2.set_xlabel("Data (10/04/2026 a 17/04/2026)")
+    ax2.set_ylim(0.5, 8.8)
     ax2.grid(True, linestyle="--", alpha=0.35)
-    ax2.legend(loc="upper left", fontsize=8.5, frameon=True)
+    ax2.legend(loc="upper left", fontsize=8.0, frameon=True)
     ax2.xaxis.set_major_formatter(mdates.DateFormatter("%d/%m %Hh"))
 
     fig.tight_layout()
@@ -251,7 +244,7 @@ def simular_acoplamento_temporal_espacial_200d():
     mediana_sub = sub_m.median(axis=1)
 
     fig, (ax_top, ax_bot) = plt.subplots(2, 1, figsize=(12.5, 6.8), sharex=True, dpi=150, gridspec_kw={"height_ratios": [2.2, 1]})
-    ax_top.plot(sub_m.index, sub_m["1006EXT-TEMPHUM-04"], color="#d62728", linewidth=1.8, label="Nó 86812 (1006EXT-TEMPHUM-04) — Falha Permanente em 15/05")
+    ax_top.plot(sub_m.index, sub_m["1006EXT-TEMPHUM-04"], color="#d62728", linewidth=1.8, label="Nó 86812 (1006EXT-TEMPHUM-04)")
     ax_top.plot(sub_m.index, sub_m["1006EXT-TEMPHUM-03"], color="#1f77b4", alpha=0.55, linewidth=1.2, label="Nó 86811 (Operação Normal)")
     ax_top.plot(sub_m.index, mediana_sub, color="black", linewidth=2.0, label="Mediana Espacial do Cluster Head (Sem Interrupção)")
     t_morte = pd.to_datetime("2026-05-15T11:30:00")
@@ -279,13 +272,102 @@ def simular_acoplamento_temporal_espacial_200d():
     return df_200d
 
 
+def avaliar_divisao_subclusters_1006_1008():
+    """
+    Avalia o efeito de dividir o Cluster Único (9 nós) em 2 Sub-Clusters por fachada/talhão:
+    - Sub-Cluster A (1006EXT - 4 nós: 86809, 86811, 86812, 86813)
+    - Sub-Cluster B (1008EXT - 5 nós: 86814, 86784, 86785, 86783, 46)
+    Verifica se a redução da heterogeneidade espacial permite reduzir τ_espacial (ex: de 4.5°C para 3.5°C).
+    """
+    df_wide = pd.read_csv(WIDE_CSV_PATH)
+    df_wide["timestamp"] = pd.to_datetime(df_wide["timestamp"])
+
+    c_1006 = ["1006EXT-TEMPHUM-01", "1006EXT-TEMPHUM-03", "1006EXT-TEMPHUM-04", "1006EXT-TEMPHUM-05"]
+    c_1008 = ["1008EXT-TEMPHUM-01", "1008EXT-TEMPHUM-03", "1008EXT-TEMPHUM-04", "1008EXT-TEMPHUM-05", "1008EXT-TEMPHUM-06"]
+    c_all = c_1006 + c_1008
+
+    t_ini, t_fim = pd.to_datetime("2026-04-10T00:00:00"), pd.to_datetime("2026-04-17T23:59:59")
+    sub = df_wide[(df_wide["sensor"] == "temperatura") & (df_wide["timestamp"] >= t_ini) & (df_wide["timestamp"] <= t_fim)].copy()
+    sub = sub.sort_values("timestamp").reset_index(drop=True)
+    ts = sub["timestamp"]
+
+    grupos = [
+        ("Cluster Único (9 nós: 1006EXT + 1008EXT)", c_all),
+        ("Sub-Cluster A: 1006EXT (4 nós)", c_1006),
+        ("Sub-Cluster B: 1008EXT (5 nós)", c_1008),
+    ]
+
+    rows_comp = []
+    dmax_series = {}
+    for nome_g, cols in grupos:
+        v = sub[cols].values
+        med = np.nanmedian(v, axis=1)
+        dmax = np.nanmax(np.abs(v - med[:, None]), axis=1)
+        dmax_series[nome_g] = dmax
+
+        for tau in [2.0, 2.5, 3.0, 3.5, 4.0, 4.5]:
+            pct_mediana = float(np.mean(dmax <= tau) * 100.0)
+            rows_comp.append({
+                "Agrupamento": nome_g,
+                "Tau_Espacial_C": tau,
+                "DeltaMax_Medio_C": round(float(np.nanmean(dmax)), 2),
+                "DeltaMax_P90_C": round(float(np.nanpercentile(dmax, 90)), 2),
+                "DeltaMax_Pico_C": round(float(np.nanmax(dmax)), 2),
+                "Pct_Tempo_Apenas_Mediana": round(pct_mediana, 2),
+                "Pct_Tempo_Anomalia": round(100.0 - pct_mediana, 2),
+            })
+
+    df_comp = pd.DataFrame(rows_comp)
+    df_comp.to_csv(OUT_DIR / "tabela_comparacao_1cluster_vs_2subclusters_abril.csv", index=False)
+
+    # Figura comparativa do Δ_max entre Cluster Único (9 nós) vs 2 Sub-Clusters (1006EXT e 1008EXT)
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(13, 7.8), sharex=True, dpi=150)
+
+    d_all = dmax_series["Cluster Único (9 nós: 1006EXT + 1008EXT)"]
+    d_1006 = dmax_series["Sub-Cluster A: 1006EXT (4 nós)"]
+    d_1008 = dmax_series["Sub-Cluster B: 1008EXT (5 nós)"]
+
+    ax1.plot(ts, d_all, color="#7f7f7f", alpha=0.55, linewidth=1.2, label="Δ_max Cluster Único (9 nós) — Média: 3,27°C")
+    ax1.plot(ts, d_1006, color="#1f77b4", linewidth=1.4, label="Δ_max Sub-Cluster A: 1006EXT (4 nós) — Média: 2,56°C")
+    ax1.axhline(4.5, color="#7f7f7f", linestyle=":", linewidth=1.4, label="τ_espacial Cluster Único = 4,5°C (94,7% normal)")
+    ax1.axhline(3.5, color="#d62728", linestyle="--", linewidth=1.6, label="τ_espacial Sub-Cluster = 3,5°C (87,4% normal + Pico 13/04)")
+    ax1.set_title("Sub-Cluster A (1006EXT - 4 Nós) vs. Cluster Único (9 Nós): Queda do Desvio Basal em ~0,75°C", fontweight="bold")
+    ax1.set_ylabel("Δ_max Espacial (°C)")
+    ax1.set_ylim(0.5, 9.8)
+    ax1.grid(True, linestyle="--", alpha=0.35)
+    ax1.legend(loc="upper left", ncol=2, fontsize=8.2, frameon=True)
+
+    ax2.plot(ts, d_all, color="#7f7f7f", alpha=0.55, linewidth=1.2, label="Δ_max Cluster Único (9 nós) — Média: 3,27°C")
+    ax2.plot(ts, d_1008, color="#2ca02c", linewidth=1.4, label="Δ_max Sub-Cluster B: 1008EXT (5 nós) — Média: 2,49°C")
+    ax2.axhline(4.5, color="#7f7f7f", linestyle=":", linewidth=1.4, label="τ_espacial Cluster Único = 4,5°C")
+    ax2.axhline(3.5, color="#d62728", linestyle="--", linewidth=1.6, label="τ_espacial Sub-Cluster = 3,5°C (91,7% normal)")
+    ax2.set_title("Sub-Cluster B (1008EXT - 5 Nós) vs. Cluster Único (9 Nós): Operação Estável com τ_espacial = 3,5°C", fontweight="bold")
+    ax2.set_ylabel("Δ_max Espacial (°C)")
+    ax2.set_xlabel("Data (10/04/2026 a 17/04/2026)")
+    ax2.set_ylim(0.5, 9.8)
+    ax2.grid(True, linestyle="--", alpha=0.35)
+    ax2.legend(loc="upper left", ncol=2, fontsize=8.2, frameon=True)
+    ax2.xaxis.set_major_formatter(mdates.DateFormatter("%d/%m %Hh"))
+
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "comparacao_1cluster_vs_2subclusters_tau.png")
+    plt.close(fig)
+
+    return df_comp
+
+
 def main():
     print("1. Calibrando τ_espacial na janela de 10/04 a 17/04/2026...")
     df_tau = calibrar_tau_espacial_abril()
     print("\n=== CALIBRAÇÃO DO LIMIAR ESPACIAL (τ_espacial) - 10/04 A 17/04/2026 ===")
     print(df_tau.to_string(index=False))
 
-    print("\n2. Simulando acoplamento Temporal (Nó-Folha) + Espacial (Cluster Head) nos 200 dias...")
+    print("\n2. Avaliando divisão em 2 Sub-Clusters (1006EXT vs 1008EXT)...")
+    df_sub = avaliar_divisao_subclusters_1006_1008()
+    print("\n=== COMPARAÇÃO: 1 CLUSTER ÚNICO (9 NÓS) VS. 2 SUB-CLUSTERS (1006EXT E 1008EXT) ===")
+    print(df_sub[df_sub["Tau_Espacial_C"].isin([3.0, 3.5, 4.0, 4.5])].to_string(index=False))
+
+    print("\n3. Simulando acoplamento Temporal (Nó-Folha) + Espacial (Cluster Head) nos 200 dias...")
     df_200d = simular_acoplamento_temporal_espacial_200d()
     print("\n=== RESULTADOS GLOBAIS DO CLUSTER HEAD ACOPLADO (200 DIAS - 9 NÓS EXTERNOS) ===")
     print(df_200d.to_string(index=False))
