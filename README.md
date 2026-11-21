@@ -56,9 +56,10 @@ IC/
 ├── resultados_e4_anomalias/              # Avaliação de surtos térmicos reais e injeção de geada/chuva sintética
 ├── resultados_e4_cluster_head/           # Calibração de τ_espacial, economia em cascata e falha do nó 86812
 │
-├── docs/                                 # Documentação Técnica e Relatórios Parciais
+├── docs/                                 # Documentação Técnica, Planilha PRISMA e Relatórios Parciais
 │   ├── contexto_mestre_ic_fapesp_koal_rssf.md # Documento de arquitetura experimental e diretrizes do projeto
 │   ├── dados_extraidos.md                # Relatório técnico dos Entregáveis E1, E2 e E5-Bloco A
+│   ├── planilha_prisma_pedro.xlsx        # Planilha do levantamento bibliográfico PRISMA (275 registros)
 │   ├── relatorio_e4_agregacao_temporal.md # Relatório técnico-científico completo do Entregável E4
 │   └── Próximas etapas.md                # Planejamento do funil experimental em 3 fases
 │
